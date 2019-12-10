@@ -14,7 +14,8 @@ class Game:
         5:{1:50, 2:100, 3:500, 4:1000, 5:1500, 6:2000},
         6:{3:600, 4:1200, 5:1800, 6:2400},
         'straight': 1500,
-        'unique_pairs': 1500
+        'unique_pairs': 1500,
+        'mcflurry': 2000
         }
 
     def calculate_score(self, dice_roll):
@@ -35,6 +36,8 @@ class Game:
                 if len(roll_counter) == 3 and index == 2 and val == 2 and key in self.combinations:
                     return self.combinations['unique_pairs']
 
+                if len(roll_counter) == 2 and val == 4 and key == 5 and 1 in roll_counter.keys():
+                    return self.combinations['mcflurry']
 
                 if val in self.combinations[key].keys():
                     result+= self.combinations[key][val]
@@ -52,6 +55,8 @@ class Game:
         else:
             print("\nOK. Maybe another time\n")
 
-game = Game()
-game.play()
-print(game.calculate_score((1, 2, 3, 3, 2, 4)))
+if __name__ == "__main__":
+
+    game = Game()
+    game.play()
+    print(game.calculate_score((1, 2, 3, 3, 2, 4)))
