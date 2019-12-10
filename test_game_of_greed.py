@@ -1,2 +1,4 @@
-from game_of_greed import 
+from game_of_greed import Game
+
+def test_
 
