@@ -32,9 +32,9 @@ class Game:
             for key, val in roll_counter.items():
                 if val in self.combinations[key].keys():
                     result+= self.combinations[key][val]
-            print(result)
+            return(result)
         except KeyError:
-            print('invalid value')
+            return('invalid value')
 
 
     def play(self):
@@ -56,5 +56,5 @@ class Game:
         #if other print "OK. Maybe another time"
 #
 my_game = Game()
-my_game.play()
+# my_game.play()
 my_game.calculate_score((1, 1, 1, 5, 5, 5))
