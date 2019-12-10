@@ -1,6 +1,10 @@
 import collections
+
 class Game:
+    """Class to crete Game instances"""
+
     def __init__(self):
+        """Method to initiate new Game instance with the combinations dictionary"""
         self.name = "Game of Greed"
         self.combinations = {
         1:{1:100, 2:200, 3:1000, 4:2000, 5:3000, 6:4000},
@@ -9,14 +13,20 @@ class Game:
         4:{3:400, 4:800, 5:1200, 6:1600},
         5:{1:50, 2:100, 3:500, 4:1000, 5:1500, 6:2000},
         6:{3:600, 4:1200, 5:1800, 6:2400},
-        'straight': 0
+        'straight': 1500
         }
 
     def calculate_score(self, dice_roll):
+        """Method to calculate score based on the input of the dice rolls that represented as tuple"""
+
         roll = dice_roll
         roll_counter = collections.Counter(roll)
         print(roll_counter)
+
         try:
+            # for key, val in roll_counter.items():
+            #     if key in range(1, 7) and key == 1:
+
             result = 0
 
             for key, val in roll_counter.items():
@@ -28,6 +38,8 @@ class Game:
 
 
     def play(self):
+        """Method to create initial game flow"""
+
         print("**************************\n\nWelcome to the Greed Game!\n\nTo see the rules go to:\n https://en.wikipedia.org/wiki/Dice_10000\n")
         if input("Wanna play?\n") == 'y':
             print("Great! Check back tomorrow :D\n")
