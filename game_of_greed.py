@@ -13,7 +13,8 @@ class Game:
         4:{3:400, 4:800, 5:1200, 6:1600},
         5:{1:50, 2:100, 3:500, 4:1000, 5:1500, 6:2000},
         6:{3:600, 4:1200, 5:1800, 6:2400},
-        'straight': 1500
+        'straight': 1500,
+        'unique_pairs': 1500
         }
 
     def calculate_score(self, dice_roll):
@@ -21,15 +22,20 @@ class Game:
 
         roll = dice_roll
         roll_counter = collections.Counter(roll)
-        print(roll_counter)
 
         try:
-            # for key, val in roll_counter.items():
-            #     if key in range(1, 7) and key == 1:
-
             result = 0
 
-            for key, val in roll_counter.items():
+            for index, (key, val) in enumerate(roll_counter.items()):
+                if index == 5 and key in self.combinations and val == 1:
+                    return self.combinations['straight']
+
+                # TO DO: refactor this one. Mb there is a way to make shoreter?
+
+                if len(roll_counter) == 3 and index == 2 and val == 2 and key in self.combinations:
+                    return self.combinations['unique_pairs']
+
+
                 if val in self.combinations[key].keys():
                     result+= self.combinations[key][val]
             return(result)
@@ -41,20 +47,11 @@ class Game:
         """Method to create initial game flow"""
 
         print("**************************\n\nWelcome to the Greed Game!\n\nTo see the rules go to:\n https://en.wikipedia.org/wiki/Dice_10000\n")
-        if input("Wanna play?\n") == 'y':
-            print("Great! Check back tomorrow :D\n")
+        if input("Wanna play?\n\n") == 'y':
+            print("\nGreat! Check back tomorrow :D\n")
         else:
-            print("OK. Maybe another time\n")
+            print("\nOK. Maybe another time\n")
 
-#   create calculate_score method to game class;
-#            input for this is a tuple representing the dice roll
-#            the output is an integer representing a dice roll
-    # add play instance method to Game class
-        # greet user
-        # prompt user "Wanna play?"
-        # if users enters 'y' print "Great! Check back tomorrow :D"
-        #if other print "OK. Maybe another time"
-#
-my_game = Game()
-# my_game.play()
-my_game.calculate_score((1, 1, 1, 5, 5, 5))
+game = Game()
+game.play()
+print(game.calculate_score((1, 2, 3, 3, 2, 4)))

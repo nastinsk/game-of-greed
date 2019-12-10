@@ -12,7 +12,7 @@ To learn the rules go [here](https://en.wikipedia.org/wiki/Dice_10000)
 1. Run command 'python3 game_of_greed.py'
 2. Type 'y' + Enter to play,
 type anything else + Enter to quit.
-
+3. To run the test run "pytest -s"
 
 
 ## Architecture
