@@ -25,6 +25,10 @@ type anything else + Enter to quit.
 1. .__init__()  - method to initiate new Game instance with the combinations dictionary
 2. .play() - Method to create initial game flow
 3. .calculate_score() - Method to calculate score based on the input of the dice rolls that represented as a tuple
+4. Game()
+5. User()
+6. .roll()
+7. .gameflow()
 
 
 ## Change Log
