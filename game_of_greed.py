@@ -1,4 +1,13 @@
 import collections
+import random
+
+class User:
+    def __init__(self, total_score=0, current_score=0):
+        self.total_score = total_score
+        self.current_score = current_score
+
+
+
 
 class Game:
     """Class to crete Game instances"""
@@ -48,10 +57,32 @@ class Game:
 
         print("**************************\n\nWelcome to the Greed Game!\n\nTo see the rules go to:\n https://en.wikipedia.org/wiki/Dice_10000\n")
         if input("Wanna play?\n\n") == 'y':
-            print("\nGreat! Check back tomorrow :D\n")
+            self.gameflow()
         else:
             print("\nOK. Maybe another time\n")
 
-game = Game()
-game.play()
-print(game.calculate_score((1, 2, 3, 3, 2, 4)))
+    def roll(self, value):
+        dice_roll = []
+        for i in range(value):
+            dice_roll.append(random.randint(1,6))
+        return dice_roll
+
+    def gameflow(self):
+            if input(("\nGreat! hit any key to roll the dice\n")) or '\n':
+                new_roll = self.roll(6)
+                if input(f'Here is your dice {new_roll} set aside at least one die to roll again or Bank Points(hit b)') == b:
+
+
+    def user_score(self):
+       total_score
+       current_score
+
+
+
+
+if __name__ == "__main__":
+
+    game = Game()
+    game.play()
+    # print(game.calculate_score((1, 2, 3, 3, 2, 4)))
+    # print(game.roll(3))
