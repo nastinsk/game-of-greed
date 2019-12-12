@@ -106,8 +106,12 @@ class Game:
                 if all(elem in rolled_dice for elem in user_dice):
                     print(user_dice, "user dice2")
                     print(rolled_dice, "rolled2")
+                    dice_amount= dice_amount -len(user_dice)
+                    if dice_amount-1 == 0:
+                        dice_amount = 6
+
                     self.current_score += self.calculate_score(user_dice)
-                    u_input = self.input_(f"You set aside {len(user_dice)} dice. You're current score is {self.current_score}. Yor total score is {self.total_score}. Hit 'b' if you want\n to bank it, hit any other key if you want to roll {dice_amount-len(user_dice)} remaining dice\n")
+                    u_input = self.input_(f"You set aside {len(user_dice)} dice. You're current score is {self.current_score}. Yor total score is {self.total_score}. Hit 'b' if you want\n to bank it, hit any other key if you want to roll {dice_amount} remaining dice\n")
 
                     if u_input == 'b':
                             self.total_score += self.current_score
@@ -116,7 +120,10 @@ class Game:
                             self.new_roll(6)
                     else:
                         # self.current_score = 0
-                        self.new_roll(dice_amount-len(user_dice))
+                        dice_amount= dice_amount -len(user_dice)
+                        if dice_amount-1 == 0:
+                            dice_amount = 6
+                        self.new_roll(dice_amount)
                 else:
                     self.print_(f'\n*** {user_dice} is not your dice you lost all your current points \nYou\'re total score is  {self.total_score}\n')
                     self.current_score = 0
@@ -131,8 +138,13 @@ class Game:
             try:
                 if len(u_input) == 1 and u_input.isdigit():
                     if int(u_input) in rolled_dice:
+                        dice_amount= dice_amount -1
+
+                        if dice_amount-1 == 0:
+                            dice_amount = 6
+
                         self.current_score += self.calculate_score(int(u_input))
-                        u_input = self.input_(f"You set aside {len(u_input)} die. You're current score is {self.current_score}. Yor total score is {self.total_score}. Hit 'b' if you want to bank it, hit any other key if you want to roll {dice_amount-1} remaining dice\n")
+                        u_input = self.input_(f"You set aside {len(u_input)} die. You're current score is {self.current_score}. Yor total score is {self.total_score}. Hit 'b' if you want to bank it, hit any other key if you want to roll {dice_amount} remaining dice\n")
 
                         if u_input == 'b':
                             self.total_score += self.current_score
@@ -148,7 +160,7 @@ class Game:
                         print(f'\n*** {u_input} is not your dice you lost all your current points \nYou\'re total score is  {self.total_score}\n')
                     self.current_score = 0
                     self.new_roll(6)
-                    
+
             except:
                 self.print_(f"\nHIT SECONdThis is not an integer you lost your current points. Your total score is {self.total_score}\n")
                 self.current_score = 0
@@ -157,7 +169,9 @@ class Game:
 
 
     def new_roll(self, dice_amount):
-
+        if dice_amount == 0:
+            self.current_score = 0
+            dice_amount == 6
         if self.input_(("\n*** Hit any key to roll the dice\n")) or '\n':
             new_roll = self.roll_set(dice_amount)
             user_input = self.input_(f'\n*** Here is your dice {new_roll} set aside at least one die \nto roll again (use spaces to multiple dice) or hit "b" \nto Bank your {self.current_score} Current Points\n\n')
