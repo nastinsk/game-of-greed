@@ -62,3 +62,7 @@ def test_two_trios(test_input, expected):
     my_game = Game()
     assert my_game.calculate_score(test_input) == expected
 
+@pytest.mark.parametrize("test_input,expected", [((5, 1, 1, 5, 5, 5), 2000), ((5, 5, 5, 5, 1, 1), 2000), ((1, 1, 5, 5, 5, 5), 2000)])
+def test_mcflurry(test_input, expected):
+    my_game = Game()
+    assert my_game.calculate_score(test_input) == expected
