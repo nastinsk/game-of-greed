@@ -57,6 +57,7 @@ class Game:
 
         print("**************************\n\nWelcome to the Greed Game!\n\nTo see the rules go to:\n https://en.wikipedia.org/wiki/Dice_10000\n")
         if input("Wanna play?\n\n") == 'y':
+            print("\nGreat!\n")
             self.gameflow()
         else:
             print("\nOK. Maybe another time\n")
@@ -68,12 +69,15 @@ class Game:
             dice_roll.append(random.randint(1,6))
         return dice_roll
 
+        # or
+        # return [random.randint(1, 6) for i in range(value)]
+
     def gameflow(self):
         """method for main game flow, possibly will be chaged to the small F()"""
 
         new_user = User()
 
-        if input(("\n*** Great! hit any key to roll the dice\n")) or '\n':
+        if input(("\n*** Hit any key to roll the dice\n")) or '\n':
             new_roll = self.roll(6)
 
             user_input = input(f'\n*** Here is your dice {new_roll} set aside at least one die to roll again (use spaces to multiple dice\n or hit "b" to Bank your {new_user.current_score} Current Points\n\n')
@@ -81,7 +85,7 @@ class Game:
             if user_input == 'b':
                 new_user.total_score +=new_user.current_score
                 self.gameflow()
-                
+
             if [int(n) for n in user_input.split()]:
                 user_dice = [int(n) for n in user_input.split()]
                 for el in user_dice:
