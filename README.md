@@ -33,6 +33,7 @@ type anything else + Enter to quit.
 
 
 
+
 ## Change Log
 
 * 12/09/2019 17:01 - Initial setup
@@ -44,7 +45,9 @@ type anything else + Enter to quit.
 * 12/11/2019 22:30 - function game_flow rewised and renamed to new_roll
 * 12/12/2019 3:30 - function set_aside created
 * 12/12/2019 4:13 - found bug, calculations of the scores not correct
-
+* 12/12/2019 22:05 - game.py file added + player_bot.py file for the bot player
 
 ## Credits
 solution for line 106 from https://stackoverflow.com/questions/3847386/testing-if-a-list-contains-another-list-with-python
+
+* The game.py file Author is JB
