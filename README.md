@@ -49,3 +49,5 @@ type anything else + Enter to quit.
 
 ## Credits
 solution for line 106 from https://stackoverflow.com/questions/3847386/testing-if-a-list-contains-another-list-with-python
+
+* The game.py file Author is JB
