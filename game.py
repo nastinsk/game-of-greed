@@ -100,7 +100,7 @@ class Game:
         while True:
 
             keep_response = self._input('Enter dice to keep: ')
-            print("i get to th line 103, keep_response", keep_response)
+            # print("i get to th line 103, keep_response", keep_response)
 
             keepers = tuple(int(char) for char in keep_response)
 
